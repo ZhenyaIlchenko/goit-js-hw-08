@@ -29,6 +29,14 @@ refs.form.addEventListener('input', throttle(onInput, 500));
 
 function onFormSubmit(event) {
   event.preventDefault();
+
+  if (
+    refs.form.elements.message.value === '' ||
+    refs.form.elements.email.value === ''
+  ) {
+    alert('Всі поля мають бути заповнені!');
+    return;
+  }
   console.log('Form is submitted');
   event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
